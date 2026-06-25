@@ -6,9 +6,20 @@ public class MusicManager : MonoBehaviour
     private static MusicManager instance;
     private AudioSource audioSource;
 
+    public SoundSettings soundSettings;
+
     public AudioSource GetAudioSource()
     {
         return audioSource;
+    }
+
+    void Start()
+    {
+        // Aplicar el volumen inicial guardado en el ScriptableObject usando AudioListener
+        if (soundSettings != null)
+        {
+            AudioListener.volume = soundSettings.volume;
+        }
     }
 
     void Awake()
